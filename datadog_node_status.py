@@ -13,13 +13,12 @@ x=api.Hosts.search()
 def nodestatus():
     dict = {}
     temp1 = {}
+    hostlist=x['host_list']
 
-    for key in x:
-        if key=='host_list':
-            for i in x[key]:
-                for j in i['meta']['agent_checks']:
-                    temp1[j[0]]=j[3]
-                dict[i['name']]=temp1
+    for i in hostlist:
+        for j in i['meta']['agent_checks']:
+            temp1[j[0]]=j[3]
+        dict[i['name']]=temp1
     return dict
 
 def errornodes():
